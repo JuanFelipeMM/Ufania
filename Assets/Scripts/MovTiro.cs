@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MovTiro : MonoBehaviour
+{
+    public float speed = 10;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        Destroy(gameObject,5);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            //Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
+}
